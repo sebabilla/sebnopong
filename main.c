@@ -1,5 +1,3 @@
-// compilation gcc *.c -o pong -lm -lSDL2_ttf -lSDL2_mixer $(sdl2-config --cflags --libs)
-
 #include <SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
