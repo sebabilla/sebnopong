@@ -1,4 +1,4 @@
-## Pong no Seb in C
+## Seb no Pong in C
 
 par Sébastien Abilla
 
@@ -13,7 +13,7 @@ Jouable au clavier ou à la manette.
 
 ![Aperçu](res/demo.png) 
 
-### Infos pour le compiler
+### Compilation
 
 Développé dans l'éditeur Geany 1.37.1 et testé sous Xubuntu 21.10 64 bits.  
 
@@ -28,7 +28,7 @@ libsdl2-ttf-dev
 puis entrer dans un terminal:
 
 ```bash
-gcc *.c -o pong -lm -lSDL2_ttf -lSDL2_mixer $(sdl2-config --cflags --libs)
+gcc *.c -o sebnopong -lm -lSDL2_ttf -lSDL2_mixer $(sdl2-config --cflags --libs)
 ```
 
 ### Crédits
