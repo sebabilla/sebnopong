@@ -89,18 +89,18 @@ void NouveauTerrain(SDL_Renderer *r, SDL_Rect *rinfo, SDL_Rect *rterrain)
 	if (SDL_RenderClear(r) != 0) 
 		SDL_ExitWithError("Liberation du rendu echouee");
 		
+	if (SDL_SetRenderDrawColor(r, 100, 0, 0, SDL_ALPHA_TRANSPARENT) != 0)
+		SDL_ExitWithError("Impossible de changer la couleur du rendu");
+		
+	if (SDL_RenderFillRect(r, rterrain) != 0)
+		SDL_ExitWithError("Impossible de dessiner un rectangle");
+
 	if (SDL_SetRenderDrawColor(r, 0, 0, 0, SDL_ALPHA_OPAQUE) != 0)
 		SDL_ExitWithError("Impossible de changer la couleur du rendu");
 		
 	if (SDL_RenderFillRect(r, rinfo) != 0)
 		SDL_ExitWithError("Impossible de dessiner un rectangle");
 		
-	if (SDL_SetRenderDrawColor(r, 100, 0, 0, SDL_ALPHA_TRANSPARENT) != 0)
-		SDL_ExitWithError("Impossible de changer la couleur du rendu");
-		
-	if (SDL_RenderFillRect(r, rterrain) != 0)
-		SDL_ExitWithError("Impossible de dessiner un rectangle");
-	
 	if (SDL_SetRenderDrawColor(r, 255, 255, 255, SDL_ALPHA_TRANSPARENT) != 0)
 		SDL_ExitWithError("Impossible de changer la couleur du rendu");
 		
@@ -113,7 +113,7 @@ void EcrireTexte(SDL_Renderer *r, char *texte, TTF_Font *f, int X, int W)
 	SDL_Color White = {255, 255, 255};									
 	SDL_Surface *surfaceMessage = TTF_RenderText_Blended(f, texte, White);
 	SDL_Texture *Message = SDL_CreateTextureFromSurface(r, surfaceMessage);
-	SDL_Rect MessageRect = {.x = X, .y = 5, .w = W, .h = 20};
+	SDL_Rect MessageRect = {.x = X, .y = 12, .w = W, .h = 20};
 	SDL_RenderCopy(r, Message, NULL, &MessageRect);
 	SDL_FreeSurface(surfaceMessage);
 	SDL_DestroyTexture(Message);
@@ -174,14 +174,14 @@ Raquette *NouvelleRaquette(GaucheDroite gd)
 	rq->vitesse = 5;
 	rq->rect_joueur.w = 34;
 	rq->rect_joueur.h = 50;
-	rq->rect_raquette.w = 8;
+	rq->rect_raquette.w = 30;
 	rq->rect_raquette.h = 60;
 	if (gd == LEFT)
 	{
 		rq->x = 40;
 		rq->rect_joueur.x = rq->x - 33;
 		rq->rect_joueur.y = rq->yh - 50;
-		rq->rect_raquette.x = rq->x - 7;
+		rq->rect_raquette.x = rq->x - 18;
 		rq->rect_raquette.y = rq->yh;
 	}
 	else
@@ -189,7 +189,7 @@ Raquette *NouvelleRaquette(GaucheDroite gd)
 		rq->x = WINDOW_WIDTH - 40;
 		rq->rect_joueur.x = rq->x - 1;
 		rq->rect_joueur.y = rq->yh + 60;
-		rq->rect_raquette.x = rq->x - 1;
+		rq->rect_raquette.x = rq->x - 12;
 		rq->rect_raquette.y = rq->yh;
 	}
 	return rq;

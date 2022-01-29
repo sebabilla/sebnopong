@@ -1,19 +1,19 @@
-# Pong no Seb in C
+## Pong no Seb in C
 
 par Sébastien Abilla
 
 MIT License (voir LICENSE)
 
-## C'est quoi?
+### C'est quoi?
 
-Mon premier jeu. Pas très beau, mais fonctionnel? 
-C'est un Pong-like game (Allan Alcorn, 1972) développé en C avec la SDL.
-Dans "Pong no Seb in C", il faut essayer de faire le plus long échange possible.
-Jouable au clavier ou à la manette.
+Mon premier jeu. Pas très beau, mais fonctionnel?  
+C'est un Pong-like game (Allan Alcorn, 1972) développé en C avec la SDL.  
+Dans "Pong no Seb in C", il faut essayer de faire le plus long échange possible.  
+Jouable au clavier ou à la manette.  
 
-## Infos pour le compiler
+### Infos pour le compiler
 
-Développé dans l'éditeur Geany 1.37.1 et testé sous Xubuntu 21.10 64 bits.
+Développé dans l'éditeur Geany 1.37.1 et testé sous Xubuntu 21.10 64 bits.  
 
 Pour pouvoir compiler, il faut avoir installé:
 
@@ -29,7 +29,7 @@ puis entrer dans un terminal:
 gcc *.c -o pong -lm -lSDL2_ttf -lSDL2_mixer $(sdl2-config --cflags --libs)
 ```
 
-## Crédits
+### Crédits
 
 De nombreuses parties du code sont adaptées ou inspirées de:
 * CS50x by David J. Malan https://cs50.harvard.edu/x/2021

@@ -64,13 +64,21 @@ int main(int argc, char *argv[])
 
 	SDL_Texture *text_character_blue = NULL;
 	SDL_Texture *text_character_green = NULL;
-	SDL_Texture *text_racket_haut = NULL;
-	SDL_Texture *text_racket_bas = NULL;
+	SDL_Texture *text_racket_haut_centre = NULL;
+	SDL_Texture *text_racket_haut_gauche = NULL;
+	SDL_Texture *text_racket_haut_droite = NULL;
+	SDL_Texture *text_racket_bas_centre = NULL;
+	SDL_Texture *text_racket_bas_gauche = NULL;
+	SDL_Texture *text_racket_bas_droite = NULL;
 
 	text_character_blue = NouvelleTexture(window, renderer,"res/character_blue.bmp");
 	text_character_green = NouvelleTexture(window, renderer,"res/character_green.bmp");
-	text_racket_haut = NouvelleTexture(window, renderer,"res/racket_haut.bmp");
-	text_racket_bas = NouvelleTexture(window, renderer,"res/racket_bas.bmp");
+	text_racket_haut_centre = NouvelleTexture(window, renderer,"res/racket_haut_centre.bmp");
+	text_racket_haut_gauche = NouvelleTexture(window, renderer,"res/racket_haut_gauche.bmp");
+	text_racket_haut_droite = NouvelleTexture(window, renderer,"res/racket_haut_droite.bmp");
+	text_racket_bas_centre = NouvelleTexture(window, renderer,"res/racket_bas_centre.bmp");
+	text_racket_bas_gauche = NouvelleTexture(window, renderer,"res/racket_bas_gauche.bmp");
+	text_racket_bas_droite = NouvelleTexture(window, renderer,"res/racket_bas_droite.bmp");
 	
 //------------------Chargement d'un éventuel joystic--------------------
 
@@ -88,8 +96,8 @@ int main(int argc, char *argv[])
 	unsigned int ticks;
 	unsigned int frame_limit = 0;
 	
-	SDL_Rect rect_info = {.x = 0, .y = 0, .w = WINDOW_WIDTH, .h = 40};
-	SDL_Rect terrain = {.x = 0, .y = 40, .w = WINDOW_WIDTH, .h = WINDOW_HEIGHT - 40};
+	SDL_Rect rect_info = {.x = 55, .y = 5, .w = WINDOW_WIDTH - 110, .h = 35};
+	SDL_Rect terrain = {.x = 0, .y = 0, .w = WINDOW_WIDTH, .h = WINDOW_HEIGHT};
 	SDL_Rect menu = {.x = WINDOW_WIDTH/2 - 200, .y = WINDOW_HEIGHT/2 - 100, .w = 400, .h = 200};
 	
 	Balle *balle = NULL;
@@ -229,14 +237,50 @@ int main(int argc, char *argv[])
 
 		sprintf(score, "Nombre de coups: %3d", coups);
 		sprintf(top_score, "Top: %3d", tempmeilleur);
-		EcrireTexte(renderer, score, font, 10, 180);
-		EcrireTexte(renderer, recommencer, font, WINDOW_WIDTH/2 - 120, 240);
-		EcrireTexte(renderer, top_score, font, WINDOW_WIDTH - 70, 60);
+		EcrireTexte(renderer, score, font, 60, 160);
+		EcrireTexte(renderer, recommencer, font, WINDOW_WIDTH/2 - 130, 260);
+		EcrireTexte(renderer, top_score, font, WINDOW_WIDTH - 130, 70);
 		
-		if (!AffichageRaquette(renderer, raquette_gauche, text_character_blue, text_racket_bas))
-			SDL_ExitWithError("Rendu Raquette");
-		if (!AffichageRaquette(renderer, raquette_droite, text_character_green, text_racket_haut))
-			SDL_ExitWithError("Rendu Raquette");
+		if (balle->vx < 0 && balle->x < 80)
+		{
+			if (!AffichageRaquette(renderer, raquette_gauche, text_character_blue, text_racket_bas_gauche))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		else if (balle->vx < 0 && balle->x < 40)
+		{
+			if (!AffichageRaquette(renderer, raquette_gauche, text_character_blue, text_racket_bas_centre))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		else if (balle->vx > 0 && balle->x < 80)
+		{
+			if (!AffichageRaquette(renderer, raquette_gauche, text_character_blue, text_racket_bas_droite))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		else
+		{
+			if (!AffichageRaquette(renderer, raquette_gauche, text_character_blue, text_racket_bas_centre))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		if (balle->vx > 0 && balle->x > WINDOW_WIDTH - 80)
+		{
+			if (!AffichageRaquette(renderer, raquette_droite, text_character_green, text_racket_haut_droite))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		else if (balle->vx > 0 && balle->x > WINDOW_WIDTH - 40)
+		{
+			if (!AffichageRaquette(renderer, raquette_droite, text_character_green, text_racket_haut_centre))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		else if (balle->vx < 0 && balle->x > WINDOW_WIDTH - 80)
+		{
+			if (!AffichageRaquette(renderer, raquette_droite, text_character_green, text_racket_haut_gauche))
+				SDL_ExitWithError("Rendu Raquette");
+		}
+		else
+		{
+			if (!AffichageRaquette(renderer, raquette_droite, text_character_green, text_racket_haut_centre))
+				SDL_ExitWithError("Rendu Raquette");
+		}
 		
 		if (bpause == 1)
 		{
