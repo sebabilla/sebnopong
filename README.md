@@ -11,6 +11,8 @@ C'est un Pong-like game (Allan Alcorn, 1972) développé en C avec la SDL.
 Dans "Pong no Seb in C", il faut essayer de faire le plus long échange possible.  
 Jouable au clavier ou à la manette. 
 
+Un aperçu de la "jouabilité" en vidéo https://youtu.be/8EHHV9PVqe4  
+
 ![Aperçu](res/demo.png) 
 
 ### Compilation
@@ -44,5 +46,7 @@ Les sons sont extraits et/ou adaptés de:
 
 Les sprites sont adaptés de:
 * kenney_sportsPack.zip https://opengameart.org/content/sports-pack-350
+
+
 
 
