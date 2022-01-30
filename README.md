@@ -7,7 +7,7 @@ MIT License (voir LICENSE)
 ### C'est quoi?
 
 Mon premier jeu. Pas très beau, mais fonctionnel?  
-C'est un Pong-like game (Allan Alcorn, 1972) développé en C avec la SDL.  
+C'est un Pong-like game (original: Allan Alcorn, 1972) développé en C avec la SDL.  
 Dans "Pong no Seb in C", il faut essayer de faire le plus long échange possible.  
 Jouable au clavier ou à la manette. 
 
